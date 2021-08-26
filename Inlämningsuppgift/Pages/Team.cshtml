@@ -1,0 +1,15 @@
+﻿@page
+@model Inlämningsuppgift.Pages.TeamModel
+@{
+}
+
+<h1>@Model.Teamname</h1>
+<ul>
+
+    @foreach (var player in Model.ListofPlayers)
+            {
+                <li>
+                    @player.Position, @player.Name
+                </li>
+            }
+</ul>

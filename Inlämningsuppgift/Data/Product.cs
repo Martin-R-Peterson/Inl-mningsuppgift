@@ -13,7 +13,7 @@ namespace Inlämningsuppgift.Data
 
         public string Namn { get; set; }
 
-        public string beskrivning { get; set; }
+        public string Beskrivning { get; set; }
 
         public double Pris { get; set; }
 
