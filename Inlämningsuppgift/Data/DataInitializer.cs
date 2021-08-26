@@ -21,13 +21,13 @@ namespace Inlämningsuppgift.Data
         {
             if (!dbContext.Products.Any(r => r.Namn == "Nvidia RTX 3080"))
             {
-                var ProduktCat = dbContext.Categories.First(cat => cat.Namn == "Grafikkort");
+                var ProduktCatGraf = dbContext.Categories.First(cat => cat.Namn == "Grafikkort");
                 dbContext.Products.Add(new Product
                 {
                     Namn = "Nvidia RTX 3080",
                     Beskrivning = "Kommer aldrig i lager",
                     Pris = 8500,
-                    category_Id = ProduktCat
+                    category_Id = ProduktCatGraf
 
                 }); ;
                 //var ProduktCat = dbContext.Categories.First(cat => cat.Namn == "Grafikkort");
@@ -36,6 +36,7 @@ namespace Inlämningsuppgift.Data
                 //var teams = dbContext.Teams.First(r => r.Namn == "trekronor");
                 //teams.Player.Add(player)
             }
+            var ProduktCatSkarm = dbContext.Categories.First(cat => cat.Namn == "Skärmar");
 
             if (!dbContext.Products.Any(r => r.Namn == "BenQ 27"))
             {
@@ -43,15 +44,21 @@ namespace Inlämningsuppgift.Data
                 {
                     Namn = "BenQ 27",
                     Beskrivning = "Halvbra skärm",
-                    Pris = 3000
+                    Pris = 3000,
+                    category_Id = ProduktCatSkarm
                 });
             }
+            var ProduktCatNatagg = dbContext.Categories.First(cat => cat.Namn == "Nätagg");
 
             if (!dbContext.Products.Any(r => r.Namn == "Corsair RM750X"))
             {
                 dbContext.Products.Add(new Product
                 {
-                    Namn = "Corsair RM750X"
+                    Namn = "Corsair RM750X",
+                    Beskrivning = "Går aldrig sönder, släktklenod till barnbarnen.",
+                    Pris = 1200,
+                    category_Id = ProduktCatNatagg
+
                 });
             }
             dbContext.SaveChanges();
