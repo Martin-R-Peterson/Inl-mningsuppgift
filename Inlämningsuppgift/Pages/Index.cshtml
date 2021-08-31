@@ -7,7 +7,7 @@
 <ul>
     @foreach (var cat in Model.Lista)
     {
-        <a asp-page="/Team" asp-route-catId="@cat.Id">
+        <a asp-page="/Category" asp-route-catId="@cat.Id">
             @cat.Name
         </a>
     }

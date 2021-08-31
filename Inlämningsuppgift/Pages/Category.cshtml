@@ -1,0 +1,14 @@
+﻿@page
+@model Inlämningsuppgift.Pages.CategoryModel
+@{
+}
+<h1>@Model.CategoryName</h1>
+<ul>
+
+    @foreach (var product in Model.ListOfProducts)
+    {
+        <li >
+            Namn: @product.Namn <br /> Beskrivning: @product.Beskrivning <br /> Pris: @product.Pris 
+        </li>
+    }
+</ul>
