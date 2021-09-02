@@ -1,8 +1,16 @@
 ﻿@page
+@using System.Xml
 @model Inlämningsuppgift.Pages.SearchResultsModel
 @{
 }
 <h1> Du sökte på @Model.SearchWord </h1>
 <ul>
-    <li></li>
+    <li>
+        @foreach (var b in Model.ProduktLista)
+        {
+        <p>Namn:@b.Namn </p> 
+    <p>Beskrivning: @b.Beskrivning </p>
+            
+        }
+    </li>
 </ul>
