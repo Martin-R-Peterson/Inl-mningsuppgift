@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Inlämningsuppgift.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210825121523_Initial")]
-    partial class Initial
+    [Migration("20210901113148_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,14 +28,14 @@ namespace Inlämningsuppgift.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Beskrivning")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Namn")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Pris")
                         .HasColumnType("float");
-
-                    b.Property<string>("beskrivning")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("category_IdId")
                         .HasColumnType("int");
@@ -65,10 +65,15 @@ namespace Inlämningsuppgift.Migrations
             modelBuilder.Entity("Inlämningsuppgift.Data.Product", b =>
                 {
                     b.HasOne("Inlämningsuppgift.Data.ProductCategory", "category_Id")
-                        .WithMany()
+                        .WithMany("Products")
                         .HasForeignKey("category_IdId");
 
                     b.Navigation("category_Id");
+                });
+
+            modelBuilder.Entity("Inlämningsuppgift.Data.ProductCategory", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }
