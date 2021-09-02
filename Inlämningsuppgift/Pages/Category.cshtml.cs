@@ -57,6 +57,7 @@ namespace Inlämningsuppgift.Pages
             var ProduktCatGraf = _dbcontext.Categories.First(ct => ct.Id == catId);
 
 
+
             ListOfProducts = currentCat.Products.Select(r => new ProductItem
             {
                 Namn = r.Namn,

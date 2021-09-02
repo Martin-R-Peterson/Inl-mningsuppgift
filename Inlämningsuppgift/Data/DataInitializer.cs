@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
 namespace Inlämningsuppgift.Data
 {
@@ -13,8 +14,21 @@ namespace Inlämningsuppgift.Data
             dbContext.Database.Migrate();
             SeedProductCategory(dbContext);
             SeedProduct(dbContext);
+            SeedRoles(dbContext);
 
            // SeedCars(dbContext);
+        }
+
+        private static void SeedRoles(ApplicationDbContext dbContext)
+        {
+            if(dbContext.Roles.Any(r => r.Name == "Admin"))
+            {
+                dbContext.Roles.Add(new IdentityRole { 
+                
+                
+                }
+                       );
+            }
         }
 
         private static void SeedProduct(ApplicationDbContext dbContext)
@@ -36,7 +50,7 @@ namespace Inlämningsuppgift.Data
                 //var teams = dbContext.Teams.First(r => r.Namn == "trekronor");
                 //teams.Player.Add(player)
             }
-            var ProduktCatSkarm = dbContext.Categories.First(cat => cat.Namn == "Skärmar");
+            var ProduktCatSkarm = dbContext.Categories.First(catsk => catsk.Namn == "Skärmar");
 
             if (!dbContext.Products.Any(r => r.Namn == "BenQ 27"))
             {
@@ -48,7 +62,7 @@ namespace Inlämningsuppgift.Data
                     category_Id = ProduktCatSkarm
                 });
             }
-            var ProduktCatNatagg = dbContext.Categories.First(cat => cat.Namn == "Nätagg");
+            var ProduktCatNatagg = dbContext.Categories.First(catna => catna.Namn == "Nätagg");
 
             if (!dbContext.Products.Any(r => r.Namn == "Corsair RM750X"))
             {

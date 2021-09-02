@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Inlämningsuppgift.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -31,7 +32,7 @@ namespace Inlämningsuppgift.Pages
 
             public string Position { get; set; }
         }
-
+        public List<SelectListItem> blabla { get; set; }
         public List<PlayerItem> ListofPlayers { get; set; }
         public void OnGet(int catID)
         {
@@ -43,6 +44,15 @@ namespace Inlämningsuppgift.Pages
             //    Name = produ.Namn,
 
             //});
+
+
+            //public Selecedit (ApplicationDbContext dbcontext)
+            //{
+            //    _dbcontext = dbcontext;
+            //    blabla = new List<SelectListItem>();
+            //    blabla.Add(new SelectListItem("Försvarare", "Försvarare"));
+
+            //}
         }
     }
 }
