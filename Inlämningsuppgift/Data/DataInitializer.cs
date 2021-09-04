@@ -15,20 +15,59 @@ namespace Inlämningsuppgift.Data
             SeedProductCategory(dbContext);
             SeedProduct(dbContext);
             SeedRoles(dbContext);
+           // SeedUsers(userManager);
 
            // SeedCars(dbContext);
+        }
+        private static void SeedUsers(UserManager<IdentityUser> userManager)
+        {
+            if (userManager.FindByEmailAsync("stefan.holmberg@systementor.se").Result == null)
+            {
+                var user = new IdentityUser();
+                user.UserName = "stefan.holmberg@systementor.se";
+                user.Email = "stefan.holmberg@systementor.se";
+                user.EmailConfirmed = true;
+
+                IdentityResult result = userManager.CreateAsync(user, "#Password123").Result;
+                userManager.AddToRoleAsync(user, "Admin").Wait();
+
+            }
+            if (userManager.FindByEmailAsync("johan.garpenlov@trekronor.se").Result == null)
+            {
+                var user = new IdentityUser();
+                user.UserName = "martin@butiken.se";
+                user.Email = "martin@butiken.se";
+                user.EmailConfirmed = true;
+
+                IdentityResult result = userManager.CreateAsync(user, "#Hej123").Result;
+                userManager.AddToRoleAsync(user, "Admin").Wait();
+
+            }
+            
+
         }
 
         private static void SeedRoles(ApplicationDbContext dbContext)
         {
-            if(dbContext.Roles.Any(r => r.Name == "Admin"))
+            if(!dbContext.Roles.Any(r => r.Name == "Admin"))
             {
-                dbContext.Roles.Add(new IdentityRole { 
-                
-                
+                dbContext.Roles.Add(new IdentityRole {
+                        NormalizedName = "Admin",
+                        Name = "Admin"
+
                 }
                        );
             }
+            if (!dbContext.Roles.Any(r => r.Name == "Coach"))
+            {
+                dbContext.Roles.Add(new IdentityRole
+                {
+                    NormalizedName = "Coach",
+                    Name = "Coach"
+                });
+            }
+
+            dbContext.SaveChanges();
         }
 
         private static void SeedProduct(ApplicationDbContext dbContext)
