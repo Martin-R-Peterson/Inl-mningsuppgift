@@ -9,7 +9,7 @@ namespace Inlämningsuppgift.Data
 {
     public class DataInitializer
     {
-        public static void SeedData(ApplicationDbContext dbContext)
+        public static void SeedData(ApplicationDbContext dbContext, UserManager<IdentityUser> userManager )
         {
             dbContext.Database.Migrate();
             SeedProductCategory(dbContext);

@@ -31,6 +31,7 @@ namespace Inlämningsuppgift.Pages
 
 
         public List<Product> ProduktLista { get; set; }
+        public string notFound { get; set; }
 
         
         
@@ -44,8 +45,11 @@ namespace Inlämningsuppgift.Pages
 
             if (!string.IsNullOrEmpty(SearchWord))
             {
+                
                 res = res.Where(s => s.Namn.Contains(SearchWord));
+                
             }
+            
 
             ProduktLista =  res.ToList();
         }

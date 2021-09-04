@@ -5,12 +5,20 @@
 }
 <h1> Du sökte på @Model.SearchWord </h1>
 <ul>
-    <li>
+    <li class="list-unstyled">
         @foreach (var b in Model.ProduktLista)
         {
-        <p>Namn:@b.Namn </p> 
-    <p>Beskrivning: @b.Beskrivning </p>
             
+           
+            
+                <p>Namn:@b.Namn </p> 
+                <p>Beskrivning: @b.Beskrivning </p>
         }
+        @if (Model.ProduktLista.Count == 0)
+        {
+        <p>@Model.SearchWord hittades inte i butiken.</p>
+        }
+            
+        
     </li>
 </ul>
