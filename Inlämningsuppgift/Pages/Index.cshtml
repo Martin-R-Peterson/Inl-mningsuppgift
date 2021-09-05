@@ -3,8 +3,25 @@
 @{
     ViewData["Title"] = "Home page";
 }
+<div class="col-md-12">
+    <div class="section-title">
+        <h3 class="title">Kategorier</h3>
+        <div class="section-nav">
+            <ul class="section-tab-nav tab-nav">
+                @foreach (var cat in Model.Lista)
+                {
+                    <a  asp-page="/Category" asp-route-catId="@cat.Id">
+                        @cat.Name
+                    </a>
+                }
 
-<ul>
+             
+            </ul>
+        </div>
+    </div>
+</div>
+
+@*<ul>
         @foreach (var cat in Model.Lista)
         {
             <a asp-page="/Category" asp-route-catId="@cat.Id">
@@ -17,7 +34,7 @@
     </ul>
     <ul>
 
-    </ul>
+    </ul>*@
 
 
 

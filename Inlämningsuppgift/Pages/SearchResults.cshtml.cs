@@ -47,9 +47,10 @@ namespace Inlämningsuppgift.Pages
             {
                 
                 res = res.Where(s => s.Namn.Contains(SearchWord));
-                
+
+
             }
-            
+
 
             ProduktLista =  res.ToList();
         }

@@ -1,0 +1,40 @@
+﻿@page
+@using System.Globalization
+@model Inlämningsuppgift.Pages.AdminPages.adminmainModel
+@{
+   
+}
+<head>
+    <link rel="stylesheet" href="~/css/style.css" />
+</head>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Namn</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.CatName)
+    {
+        <tr>
+            <td>@item.Namn</td>
+           
+            <td>
+                <a asp-page="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
+
+            </td>
+
+        </tr>
+    }
+    </tbody>
+    <tfooter>
+        <tr>
+            <td colspan="2">
+                <a asp-page="New" class="btn btn-primary">Skapa ny</a>
+            </td>
+        </tr>
+    </tfooter>
+</table>

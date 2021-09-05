@@ -83,11 +83,33 @@ namespace Inlämningsuppgift.Data
                     category_Id = ProduktCatGraf
 
                 }); ;
-                //var ProduktCat = dbContext.Categories.First(cat => cat.Namn == "Grafikkort");
-                //dbContext.Products.Add(ProduktCat);
-                //ProduktCat.Products.Add(ProduktCat.Id);
-                //var teams = dbContext.Teams.First(r => r.Namn == "trekronor");
-                //teams.Player.Add(player)
+                
+            }
+            if (!dbContext.Products.Any(r => r.Namn == "Nvidia RTX 3070"))
+            {
+                var ProduktCatGraf = dbContext.Categories.First(cat => cat.Namn == "Grafikkort");
+                dbContext.Products.Add(new Product
+                {
+                    Namn = "Nvidia RTX 3070",
+                    Beskrivning = "Grymt grafikkort för gaming",
+                    Pris = 7000,
+                    category_Id = ProduktCatGraf
+
+                }); ;
+
+            }
+            if (!dbContext.Products.Any(r => r.Namn == "Nvidia RTX 2060"))
+            {
+                var ProduktCatGraf = dbContext.Categories.First(cat => cat.Namn == "Grafikkort");
+                dbContext.Products.Add(new Product
+                {
+                    Namn = "Nvidia RTX 2060",
+                    Beskrivning = "Bra prestanda för pengarna",
+                    Pris = 4000,
+                    category_Id = ProduktCatGraf
+
+                }); ;
+
             }
             var ProduktCatSkarm = dbContext.Categories.First(catsk => catsk.Namn == "Skärmar");
 
@@ -101,6 +123,29 @@ namespace Inlämningsuppgift.Data
                     category_Id = ProduktCatSkarm
                 });
             }
+
+            if (!dbContext.Products.Any(r => r.Namn == "Asus 32"))
+            {
+                dbContext.Products.Add(new Product
+                {
+                    Namn = "Asus 32",
+                    Beskrivning = "Stor skärm för stora spel",
+                    Pris = 6000,
+                    category_Id = ProduktCatSkarm
+                });
+            }
+
+            if (!dbContext.Products.Any(r => r.Namn == "Acer 24"))
+            {
+                dbContext.Products.Add(new Product
+                {
+                    Namn = "Acer 24",
+                    Beskrivning = "Bra budgetskärm",
+                    Pris = 1500,
+                    category_Id = ProduktCatSkarm
+                });
+            }
+
             var ProduktCatNatagg = dbContext.Categories.First(catna => catna.Namn == "Nätagg");
 
             if (!dbContext.Products.Any(r => r.Namn == "Corsair RM750X"))
@@ -110,6 +155,30 @@ namespace Inlämningsuppgift.Data
                     Namn = "Corsair RM750X",
                     Beskrivning = "Går aldrig sönder, släktklenod till barnbarnen.",
                     Pris = 1200,
+                    category_Id = ProduktCatNatagg
+
+                });
+            }
+
+            if (!dbContext.Products.Any(r => r.Namn == "Corsair RM550"))
+            {
+                dbContext.Products.Add(new Product
+                {
+                    Namn = "Corsair RM550",
+                    Beskrivning = "Bra för pengarna",
+                    Pris = 700,
+                    category_Id = ProduktCatNatagg
+
+                });
+            }
+
+            if (!dbContext.Products.Any(r => r.Namn == "Corsair RM1200"))
+            {
+                dbContext.Products.Add(new Product
+                {
+                    Namn = "Corsair RM1200",
+                    Beskrivning = "För extrem överclockaren",
+                    Pris = 2000,
                     category_Id = ProduktCatNatagg
 
                 });

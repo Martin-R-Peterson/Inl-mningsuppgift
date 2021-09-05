@@ -447,7 +447,6 @@ textarea.input {
     padding-top: 15px;
     padding-bottom: 15px;
     background-color: #15161D;
-    height: 50px;
     width: auto;
 }
 
@@ -457,7 +456,6 @@ textarea.input {
 
 .header-logo .logo img {
   display: block;
-    height:130px;
   
 }
 
