@@ -1,0 +1,35 @@
+﻿@page
+@model Inlämningsuppgift.Pages.AdminPages.admincatnewModel
+@{
+}
+
+<div class="row">
+    <div class="col-lg-12 mb-5">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="h6 text-uppercase mb-0">Ny Company</h3>
+            </div>
+
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data">
+
+
+                    <div class="form-group">
+                        <label asp-for="Namn">Namn</label>
+                        <input class="form-control" asp-for="Namn">
+                        <span asp-validation-for="Namn" class="field-validation-error"></span>
+                    </div>
+
+                    
+
+
+
+
+                    <button type="submit" class="btn btn-primary">Spara</button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>

@@ -20,7 +20,8 @@ namespace Inlämningsuppgift.Areas.Identity
                         context.Configuration.GetConnectionString("DefaultConnection")));
 
                 services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddRoles<IdentityRole>()   
+                .AddEntityFrameworkStores<ApplicationDbContext>();
             });
         }
     }

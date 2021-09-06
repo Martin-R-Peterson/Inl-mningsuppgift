@@ -27,32 +27,50 @@ namespace Inlämningsuppgift.Pages
         [BindProperty]
 
         public string SearchWord { get; set; }
-        [BindProperty]
+       
+
+        public class ProductItem
+        {
+            public string Namn { get; set; }
+
+            public string Beskrivning { get; set; }
+            public double Pris { get; set; }
 
 
-        public List<Product> ProduktLista { get; set; }
-        public string notFound { get; set; }
+        }
+
+        public List<ProductItem> ProduktLista { get; set; }
 
         
         
         public void OnGet(string query)
         {
             SearchWord = query;
-            //sök produkter.
-            var res = from r in _dbcontext.Products
-                select r;
+
+            ProduktLista = _dbcontext.Products.Select(s => new ProductItem
+            {
+                Namn = s.Namn,
+                Beskrivning = s.Beskrivning,
+                Pris = s.Pris
+            }).ToList();
+
+
+
+
 
 
             if (!string.IsNullOrEmpty(SearchWord))
             {
-                
-                res = res.Where(s => s.Namn.Contains(SearchWord));
+
+               var res = ProduktLista.Where(s => s.Namn.Contains(SearchWord) || s.Beskrivning.Contains(SearchWord));
+                ProduktLista = res.ToList();
 
 
             }
 
 
-            ProduktLista =  res.ToList();
+           
+
         }
 
 

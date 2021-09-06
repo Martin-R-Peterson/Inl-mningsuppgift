@@ -15,9 +15,8 @@ namespace Inlämningsuppgift.Data
             SeedProductCategory(dbContext);
             SeedProduct(dbContext);
             SeedRoles(dbContext);
-           // SeedUsers(userManager);
+           SeedUsers(userManager);
 
-           // SeedCars(dbContext);
         }
         private static void SeedUsers(UserManager<IdentityUser> userManager)
         {
@@ -58,12 +57,12 @@ namespace Inlämningsuppgift.Data
                 }
                        );
             }
-            if (!dbContext.Roles.Any(r => r.Name == "Coach"))
+            if (!dbContext.Roles.Any(r => r.Name == "ProductManager"))
             {
                 dbContext.Roles.Add(new IdentityRole
                 {
-                    NormalizedName = "Coach",
-                    Name = "Coach"
+                    NormalizedName = "ProductManager",
+                    Name = "ProductManager"
                 });
             }
 

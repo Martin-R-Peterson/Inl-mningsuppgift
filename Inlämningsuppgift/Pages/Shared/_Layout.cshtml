@@ -42,32 +42,33 @@
 
 
 <html lang="en">
-<head>
+<head >
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <title>Butiken - Datordelar</title>
+    <title>@ViewData["Title"] - Inlämningsuppgift</title>
+
 
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
     <!-- Bootstrap -->
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="~/css/bootstrap.min.css" />
 
     <!-- Slick -->
-    <link type="text/css" rel="stylesheet" href="css/slick.css" />
-    <link type="text/css" rel="stylesheet" href="css/slick-theme.css" />
+    <link type="text/css" rel="stylesheet" href="~/css/slick.css" />
+    <link type="text/css" rel="stylesheet" href="~/css/slick-theme.css" />
 
     <!-- nouislider -->
-    <link type="text/css" rel="stylesheet" href="css/nouislider.min.css" />
+    <link type="text/css" rel="stylesheet" href="~/css/nouislider.min.css" />
 
     <!-- Font Awesome Icon -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
 
     <!-- Custom stlylesheet -->
-    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <link type="text/css" rel="stylesheet" href="~/css/style.css" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -83,10 +84,10 @@
         <!-- TOP HEADER -->
         <div id="top-header">
             <div class="container">
-               
-                <ul class="header-links pull-right">
-                    <li><a asp-page="_Layout"><i class="fa fa-user-o"></i> My Account</a></li>
-                </ul>
+
+
+                <partial name="_LoginPartial" class="fa fa-user-o" />
+
             </div>
         </div>
         <!-- /TOP HEADER -->
@@ -100,7 +101,7 @@
                     <div class="col-md-3">
                         <div class="header-logo">
                             <a href="#" class="logo">
-                                <img src="./img/logo2.png" alt="">
+                                <img src="~/img/logo2.png" alt="">
                             </a>
                         </div>
                     </div>
@@ -109,14 +110,14 @@
                     <div class="col-md-6">
                         <div class="header-search">
                             <form method="get" asp-page="/SearchResults" asp-for="SearchResults">
-                               
-                                <input class="input" placeholder="Search here"  name="query">
+
+                                <input class="input" placeholder="Search here" name="query">
                                 <button class="search-btn" type="submit">Sök</button>
                             </form>
                         </div>
                     </div>
                     <!-- /SEARCH BAR -->
-                    
+
                 </div>
                 <!-- row -->
             </div>
@@ -173,17 +174,25 @@
     <footer class="border-top footer text-muted">
         @*<form method="get" asp-page="/SearchResults" asp-for="SearchResults">
 
-            <input type="text" class="form-control" name="query" />
-            <input type="submit" value="Sök" />
-        </form>*@
+                <input type="text" class="form-control" name="query" />
+                <input type="submit" value="Sök" />
+            </form>*@
         <div class="container">
             &copy; 2021 - Inlämningsuppgift - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- jQuery Plugins -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/nouislider.min.js"></script>
+    <script src="js/jquery.zoom.min.js"></script>
+    <script src="js/main.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
