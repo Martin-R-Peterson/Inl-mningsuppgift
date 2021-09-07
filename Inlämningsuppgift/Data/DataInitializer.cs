@@ -31,7 +31,7 @@ namespace Inlämningsuppgift.Data
                 userManager.AddToRoleAsync(user, "Admin").Wait();
 
             }
-            if (userManager.FindByEmailAsync("johan.garpenlov@trekronor.se").Result == null)
+            if (userManager.FindByEmailAsync("martin@butiken.se").Result == null)
             {
                 var user = new IdentityUser();
                 user.UserName = "martin@butiken.se";
