@@ -33,7 +33,7 @@ namespace Inlämningsuppgift.Pages.AdminPages
 
         public class ProdItem
         {
-            public int ID { get; set; }
+            public int Id { get; set; }
             public string Namn { get; set; }
 
 
@@ -41,13 +41,28 @@ namespace Inlämningsuppgift.Pages.AdminPages
 
         public int tempID { get; set; }
 
+
         public List<ProdItem> ProdName { get; set; }
+
+        public IActionResult OnPost(int query)
+        {
+            if (ModelState.IsValid)
+            {
+                var CatEdit = _context.Categories.First(v => v.Id == query);
+                CatEdit.Namn = CatNamn;
+                _context.SaveChanges();
+                // _context.Add(CatEdit);
+                return RedirectToPage("/AdminPages/adminmain");
+            }
+
+            return RedirectToPage();
+        }
 
         public void OnGet(int query)
         {
             var Cat = _context.Categories.First(v => v.Id == query);
 
-
+            tempID = Cat.Id;
             
 
 
@@ -57,10 +72,12 @@ namespace Inlämningsuppgift.Pages.AdminPages
                     (cat => cat.Id == query);
             CatNamn = currentCatName.Namn;
 
+           
+
             ProdName = currentCatName.Products.Select(r => new ProdItem
             {
                 Namn = r.Namn,
-                ID = r.Id
+                Id = r.Id
             }).ToList();
 
 

@@ -14,19 +14,22 @@ namespace Inlämningsuppgift.Pages
 {
     public class SearchResultsModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
         private readonly ApplicationDbContext _dbcontext;
 
 
 
-        public SearchResultsModel(ILogger<IndexModel> logger, ApplicationDbContext dbContext)
+        public SearchResultsModel( ApplicationDbContext dbContext)
         {
-            _logger = logger;
             _dbcontext = dbContext;
         }
         [BindProperty]
 
         public string SearchWord { get; set; }
+
+        public int Search { get; set; }
+
+        public bool SortBool { get; set; }
+        public bool RSortBool { get; set; }
        
 
         public class ProductItem
@@ -42,10 +45,12 @@ namespace Inlämningsuppgift.Pages
         public List<ProductItem> ProduktLista { get; set; }
 
         
-        
-        public void OnGet(string query)
+
+
+        public void OnGet(string query, bool SBool)
         {
             SearchWord = query;
+            SortBool = SBool;
 
             ProduktLista = _dbcontext.Products.Select(s => new ProductItem
             {
@@ -58,18 +63,30 @@ namespace Inlämningsuppgift.Pages
 
 
 
-
             if (!string.IsNullOrEmpty(SearchWord))
             {
 
                var res = ProduktLista.Where(s => s.Namn.Contains(SearchWord) || s.Beskrivning.Contains(SearchWord));
-                ProduktLista = res.ToList();
+
+               
+               if (SortBool == false)
+               {
+                   RSortBool = true;
+                   res = res.OrderByDescending(e => e.Namn);
+               }
+                else 
+               {
+                   RSortBool = false;
+                   res = res.OrderBy(v => v.Namn);
+               }
+
+               ProduktLista = res.ToList();
 
 
             }
 
 
-           
+
 
         }
 

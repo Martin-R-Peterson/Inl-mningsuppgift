@@ -6,19 +6,21 @@
 <h1> Du sökte på @Model.SearchWord </h1>
 <ul>
     <li class="list-unstyled">
+        <a asp-route-query="@Model.SearchWord" asp-route-SBool="@Model.RSortBool" class="btn btn-default">Sortera Namn</a>
         @foreach (var b in Model.ProduktLista)
         {
-            
-           
-            
-                <p>Namn:@b.Namn </p> 
-                <p>Beskrivning: @b.Beskrivning </p>
+
+
+
+            <p>Namn:@b.Namn </p>
+            <p>Beskrivning: @b.Beskrivning </p>
+            <p>Pris: @b.Pris</p>
         }
         @if (Model.ProduktLista.Count == 0)
         {
-        <p>@Model.SearchWord hittades inte i butiken.</p>
+            <p>@Model.SearchWord hittades inte i butiken.</p>
         }
-            
-        
+
+
     </li>
 </ul>

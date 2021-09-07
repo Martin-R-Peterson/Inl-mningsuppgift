@@ -17,12 +17,12 @@ namespace Inlämningsuppgift.Pages.AdminPages.Products
     {
         private readonly ApplicationDbContext _context;
 
+
         public EditProductModel(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        public int Id { get; set; }
         [BindProperty]
         [MaxLength(50)]
         public string Namn { get; set; }
@@ -30,16 +30,34 @@ namespace Inlämningsuppgift.Pages.AdminPages.Products
         [MaxLength(100)]
         public string Beskrivning { get; set; }
         [BindProperty]
-        [MaxLength(10)]
+        [Range(0,100000)]
         public double Pris { get; set; }
-        public void OnGet(int query)
+
+        public IActionResult OnPost(int Id)
+        {
+            if (ModelState.IsValid)
+            {
+                var ProdEdit = _context.Products.Include(e => e.category_Id).First(r => r.Id == Id);
+                ProdEdit.Namn = Namn;
+                ProdEdit.Beskrivning = Beskrivning;
+                ProdEdit.Pris = Pris;
+                _context.SaveChanges();
+                return RedirectToPage("/AdminPages/adminmain");
+            }
+
+            return RedirectToPage();
+        }
+        public void OnGet(int Id)
         {
             
 
-            var prod = _context.Products.First(s => s.Id == query);
+            var prod = _context.Products.First(s => s.Id == Id);
             Namn = prod.Namn;
             Beskrivning = prod.Beskrivning;
             Pris = prod.Pris;
+
+
+
 
 
         }

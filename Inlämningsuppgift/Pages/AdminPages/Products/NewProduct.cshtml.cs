@@ -29,7 +29,8 @@ namespace Inlämningsuppgift.Pages.AdminPages.Products
         [MaxLength(100)]
         public string Beskrivning { get; set; }
         [BindProperty]
-        [MaxLength(10)]
+        [Range(0, 100000)]
+
         public double Pris { get; set; }
 
 
