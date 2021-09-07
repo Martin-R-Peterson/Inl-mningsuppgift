@@ -13,15 +13,16 @@ namespace Inlämningsuppgift.Pages.AdminPages.Products
 {
     [Authorize(Roles = "Admin, ProductManager")]
 
-    public class NewProductModel : PageModel
+    public class EditProductModel : PageModel
     {
         private readonly ApplicationDbContext _context;
 
-        public NewProductModel(ApplicationDbContext context)
+        public EditProductModel(ApplicationDbContext context)
         {
             _context = context;
         }
 
+        public int Id { get; set; }
         [BindProperty]
         [MaxLength(50)]
         public string Namn { get; set; }
@@ -31,33 +32,15 @@ namespace Inlämningsuppgift.Pages.AdminPages.Products
         [BindProperty]
         [MaxLength(10)]
         public double Pris { get; set; }
-
-
-
-        public IActionResult OnPost(int query)
+        public void OnGet(int query)
         {
-            var catID =
-                _context.Categories.Include
-                    (p => p.Products).First
-                    (cat => cat.Id == query);
-            if (ModelState.IsValid)
-            {
+            
 
-                var prod = new Product();
-                prod.Namn = Namn;
-                prod.Beskrivning = Beskrivning;
-                prod.Pris = Pris;
-                prod.category_Id = catID;
-                _context.Add(prod);
-                _context.SaveChanges();
-                return RedirectToPage("/AdminPages/adminmain");
-            }
-            return RedirectToPage();
+            var prod = _context.Products.First(s => s.Id == query);
+            Namn = prod.Namn;
+            Beskrivning = prod.Beskrivning;
+            Pris = prod.Pris;
 
-        }
-
-        public void OnGet()
-        {
 
         }
     }
