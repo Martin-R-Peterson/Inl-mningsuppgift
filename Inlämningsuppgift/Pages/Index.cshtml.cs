@@ -22,10 +22,7 @@ namespace Inlämningsuppgift.Pages
             _dbcontext = dbContext;
         }
 
-        //public IActionResult OnPost()
-        //{
-
-        //}
+        
 
         public class CategoryItem
         {
@@ -37,7 +34,6 @@ namespace Inlämningsuppgift.Pages
 
         public void OnGet()
         {
-            //var lista = _dbcontext.Categories.ToList();
 
             Lista = new List<CategoryItem>();
             foreach (var cat in _dbcontext.Categories)
